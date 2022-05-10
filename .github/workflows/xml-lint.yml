@@ -1,0 +1,23 @@
+name: XML Lint
+on: 
+  push:
+    paths:
+    - '**.xml'
+    - '**.xml.in'
+  pull_request:
+    paths:
+    - '**.xml'
+    - '**.xml.in'
+  schedule:
+  - cron: '0 6 * * 1'
+
+jobs:
+  lint:
+    name: XML-Lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: XML Lint
+      uses: ChristophWurst/xmllint-action@v1
